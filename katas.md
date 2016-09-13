@@ -88,3 +88,78 @@ are all methods of a type.  I.E, given a type with methods Foo and Bar both with
 { {"Foo", {"A", "B", "C" }, { "Bar", {"A", "B", "C"}}}
 
 Kata 5: Find all types in an assembly that implement a specific interface
+
+Kata 6: Write an extension method that to retrieve the value of a property on an object; i.e.
+```
+var foo = new Foo { Name = "Bar" };
+
+var result = foo.GetValue("Bar");
+
+```
+Assume the property always exists for the purposes of this kata.  
+
+Kata 7: Write the code to make the following test pass:
+
+```
+[TestMethod]
+public void WithStringReflection()
+{
+    var source = new User
+    {
+        FirstName = "Forest",
+        LastName = "Marie",
+        BirthDate = new DateTime(1978, 10, 15)
+    };
+
+    var map = new Map<User, UserModel>(source);
+
+    var age = (int)DateTime.Today.Subtract(source.BirthDate).TotalDays / 365;
+
+    map.Populate("DateOfBirth", "BirthDate")
+        .Populate("Name", s => s.FirstName + " " + s.LastName)
+        .Populate("Age", s => age);
+
+    var target = map.Target;
+
+    Assert.AreEqual("Forest Marie", target.Name);
+    Assert.AreEqual(source.BirthDate, target.DateOfBirth);
+    Assert.AreEqual(age, target.Age);
+}
+```
+
+Kata 8: Leveraging Kata 7, write the code to amke the following test pass:
+
+```
+[TestMethod]
+public void WithExpressionReflection()
+{
+    var source = new User
+    {
+        FirstName = "Forest",
+        LastName = "Marie",
+        BirthDate = new DateTime(1978, 10, 15)
+    };
+
+    var map = new Map<User, UserModel>(source);
+
+    var age = (int)DateTime.Today.Subtract(source.BirthDate).TotalDays / 365;
+
+    map.Populate(t => t.DateOfBirth, s => s.BirthDate)
+        .Populate(t => t.Name, s => s.FirstName + " " + s.LastName)
+        .Populate(t => t.Age, s => age);
+
+    var target = map.Target;
+
+    Assert.AreEqual("Forest Marie", target.Name);
+    Assert.AreEqual(source.BirthDate, target.DateOfBirth);
+    Assert.AreEqual(age, target.Age);
+}
+```
+
+#### Delegates (Action, Action<T>, Func<TIn, TOut>, Converter<TIn, TOut)
+
+#### Linq (SelectMany, GroupBy, Enumerable.Join)
+
+#### dynamic
+
+#### Intermediate Language
