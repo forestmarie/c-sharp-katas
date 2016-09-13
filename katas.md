@@ -156,6 +156,8 @@ public void WithExpressionReflection()
 }
 ```
 
+Kata 9: Write a barebones IoC container
+
 #### Delegates (Action, Action<T>, Func<TIn, TOut>, Converter<TIn, TOut)
 
 #### Linq (SelectMany, GroupBy, Enumerable.Join)
