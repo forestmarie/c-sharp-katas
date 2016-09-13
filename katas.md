@@ -86,3 +86,5 @@ all attributes of a type.
 Kata 4: Add an extension method to return information for all attributes that
 are all methods of a type.  I.E, given a type with methods Foo and Bar both with attributes A,B,C your method would return something like:
 { {"Foo", {"A", "B", "C" }, { "Bar", {"A", "B", "C"}}}
+
+Kata 5: Find all types in an assembly that implement a specific interface
