@@ -55,7 +55,7 @@ The string.Join method combines many strings into one. It receives two arguments
 an array or IEnumerable and a separator string. It places the separator between
 every element of the collection in the returned string.
 
-Kata: Create a single flattened string containing "<br />" behind every string
+Kata: Create a single flattened string containing ```<br />``` behind every string
 in a string array except the last element.
 
 ```
